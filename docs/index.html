@@ -1,6 +1,6 @@
 <html><head><base href="https://recrutement-mandataires-immobiliers.com/">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rejoignez-nous - Devenez Mandataire Immobilier Indépendant</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -29,10 +29,10 @@
             transition: opacity 1s ease-in-out;
         }
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -178,6 +178,98 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
+        .calculateur {
+            background-color: #f9f9f9;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+        .calculateur h2 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .resultats {
+            margin-top: 2rem;
+            background-color: #e6f3ff;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .resultats h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+        .legal {
+            margin-top: 3rem;
+            background-color: #f9f9f9;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: left;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            body {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .advantage-card {
+                padding: 1.5rem;
+            }
+            .advantage-card h3 {
+                font-size: 1.3rem;
+            }
+            .advantage-card p {
+                font-size: 1rem;
+            }
+            .calculateur, #inscription, .legal {
+                padding: 2rem;
+            }
+            .advantage-card {
+                flex-basis: 100%;
+            }
+            .form-group input {
+                font-size: 16px;
+                padding: 10px;
+            }
+            .cta-button {
+                width: 100%;
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,8 +283,10 @@
     <nav>
         <ul>
             <li><a href="#avantages">Nos Avantages</a></li>
-            <li><a href="#inscription" class="active">Inscription</a></li>
+            <li><a href="#inscription">Inscription</a></li>
+            <li><a href="#calculateur">Calculateur de coûts</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#legal">Aspects Légaux</a></li>
         </ul>
     </nav>
 
@@ -208,7 +302,7 @@
         <section id="avantages" class="advantages">
             <div class="advantage-card">
                 <h3>Indépendance et Flexibilité</h3>
-                <p>En tant que mandataire immobilier indépendant, vous êtes maître de votre temps et de votre activité. Vous avez la liberté de gérer votre propre emploi du temps, de choisir vos clients et vos projets. Que vous préfériez travailler tôt le matin ou tard le soir, vous avez la flexibilité d'adapter votre travail à votre style de vie. Cette autonomie vous permet de concilier vie professionnelle et vie personnelle comme jamais auparavant.</p>
+                <p>En tant que mandataire immobilier indépendant, vous êtes maître de votre temps et de votre activité. Vous avez la liberté de gérer votre propre emploi du temps, de choisir vos clients et vos projets. Que vous préfériez travailler à temps partiel ou à temps complet, vous avez la flexibilité d'adapter votre travail à votre style de vie. Cette autonomie vous permet de concilier vie professionnelle et vie personnelle comme jamais auparavant. De plus, vous travaillez de chez vous, évitant ainsi les contraintes liées à un bureau traditionnel.</p>
             </div>
             <div class="advantage-card">
                 <h3>Revenus Supplémentaires (MLM)</h3>
@@ -216,19 +310,23 @@
             </div>
             <div class="advantage-card">
                 <h3>Formation Continue</h3>
-                <p>Nous croyons fermement au développement professionnel continu. C'est pourquoi nous offrons des programmes de formation complets et réguliers. Que vous soyez débutant ou expérimenté, nos formations couvrent tous les aspects du métier : techniques de vente, négociation, droit immobilier, marketing digital, et bien plus encore. Vous aurez accès à des webinaires, des ateliers pratiques et des sessions de coaching personnalisées pour constamment améliorer vos compétences et rester à la pointe du secteur.</p>
+                <p>Nous croyons fermement au développement professionnel continu. C'est pourquoi nous offrons des programmes de formation complets et réguliers. Que vous soyez débutant ou expérimenté, nos formations couvrent tous les aspects du métier : techniques de vente, négociation, droit immobilier, marketing digital, et bien plus encore. Vous aurez accès à des webinaires, des ateliers pratiques et des sessions de coaching personnalisées pour constamment améliorer vos compétences et rester à la pointe du secteur. De plus, nous vous aidons à remplir vos obligations légales de formation, notamment les 42 heures requises tous les 3 ans par la loi ALUR.</p>
             </div>
             <div class="advantage-card">
-                <h3>Outils Digitaux Performants</h3>
-                <p>Pour réussir dans l'immobilier moderne, il est essentiel d'avoir les bons outils. Nous mettons à votre disposition une suite complète d'outils digitaux de pointe. Cela inclut un CRM avancé pour la gestion de vos clients, des outils de marketing automatisés pour booster votre visibilité en ligne, des plateformes de signature électronique pour faciliter les transactions, et bien plus encore. Ces outils vous permettront d'optimiser votre temps, d'augmenter votre productivité et de vous démarquer dans un marché compétitif.</p>
+                <h3>Rémunération Attractive</h3>
+                <p>En tant qu'agent commercial indépendant en immobilier, votre rémunération n'est pas plafonnée. Selon le réseau immobilier auquel vous appartenez, vous pouvez toucher entre 69 et 99% d'honoraires, contre seulement 40 à 45% en tant que salarié. Votre revenu dépend directement de votre investissement dans l'activité, offrant un potentiel de gains significativement plus élevé que dans un emploi traditionnel.</p>
             </div>
             <div class="advantage-card">
-                <h3>Frais Réduits</h3>
-                <p>L'un des avantages majeurs de notre modèle est la structure de frais réduits. Contrairement aux agences traditionnelles, vous n'avez pas à supporter les coûts élevés liés à la location d'un bureau ou à l'embauche de personnel. Cela signifie que vous gardez une part plus importante de vos commissions. De plus, notre système de commissions attractives sans plafonnement vous permet de maximiser vos gains en fonction de votre performance. Plus vous vendez, plus vous gagnez, sans limite.</p>
+                <h3>Service de Qualité Supérieure</h3>
+                <p>En tant que mandataire indépendant, vous avez l'opportunité d'offrir un service de meilleure qualité. Vous travaillez principalement grâce à votre relationnel, privilégiant les contacts directs. Cela vous permet d'être plus proche de vos prospects et de vos clients. En vous concentrant généralement sur un secteur géographique réduit, vous pouvez développer une excellente réputation locale, ce qui vous aide à étoffer régulièrement votre portefeuille de biens.</p>
             </div>
             <div class="advantage-card">
-                <h3>Développement International</h3>
-                <p>Votre ambition ne connaît pas de frontières ? Notre réseau non plus ! Nous offrons des opportunités uniques de développement international. Vous pouvez étendre votre activité au-delà de votre région, voire même à l'international. Imaginez-vous collaborer sur des transactions immobilières à l'étranger, développer un réseau international de clients, ou même ouvrir votre propre bureau dans un autre pays. Avec nous, votre potentiel de croissance est véritablement global.</p>
+                <h3>Choix des Partenaires et Collaborateurs</h3>
+                <p>L'indépendance vous permet de choisir librement vos partenaires professionnels : courtiers, diagnostiqueurs, notaires, etc. Certains réseaux, comme iad France, vous offrent même la possibilité de développer votre propre organisation commerciale et un fonds de commerce valorisable et cessible. Vous avez le contrôle total sur le recrutement et pouvez sélectionner les profils qui correspondent le mieux à vos valeurs et à votre vision, vous permettant ainsi de bâtir une équipe stable et pérenne.</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Démarrage Sans Expérience Préalable</h3>
+                <p>Un avantage majeur de devenir agent commercial indépendant en immobilier est la possibilité de se lancer sans expérience préalable ni diplôme spécifique. Cependant, il est important de noter que vous devrez vous former continuellement pour rester en conformité avec les lois du secteur et offrir un service de qualité à vos clients.</p>
             </div>
         </section>
 
@@ -245,6 +343,50 @@
             <p>Email : <a href="mailto:ricardo.monteiro-teixeira@iadfrance.fr">ricardo.monteiro-teixeira@iadfrance.fr</a></p>
             <p>Téléphone : +33 06 03 67 86 60</p>
         </section>
+
+        <section id="calculateur" class="calculateur">
+            <h2>Calculateur de coûts pour micro-entrepreneurs</h2>
+            <p>Estimez vos charges en tant que mandataire immobilier micro-entrepreneur :</p>
+            <form id="cout-form">
+                <div class="form-group">
+                    <label for="chiffre-affaires">Chiffre d'affaires annuel estimé (€) :</label>
+                    <input type="number" id="chiffre-affaires" name="chiffre-affaires" required>
+                </div>
+                <div class="form-group">
+                    <label for="frais-inscription">Frais d'inscription (€) :</label>
+                    <input type="number" id="frais-inscription" name="frais-inscription" required>
+                </div>
+                <div class="form-group">
+                    <label for="frais-publicite">Frais de publicité annuels (€) :</label>
+                    <input type="number" id="frais-publicite" name="frais-publicite" required>
+                </div>
+                <div class="form-group">
+                    <label for="frais-deplacement">Frais de déplacement annuels (€) :</label>
+                    <input type="number" id="frais-deplacement" name="frais-deplacement" required>
+                </div>
+                <button type="submit" class="cta-button">Calculer</button>
+            </form>
+            <div id="resultats" class="resultats" style="display: none;">
+                <h3>Résultats :</h3>
+                <p>Cotisations sociales : <span id="cotisations-sociales"></span> €</p>
+                <p>Charges totales : <span id="charges-totales"></span> €</p>
+                <p>Bénéfice net estimé : <span id="benefice-net"></span> €</p>
+            </div>
+        </section>
+
+        <section id="legal" class="legal">
+            <h2>Conditions Légales et Avantages Fiscaux</h2>
+            <h3>Statut de Micro-entrepreneur</h3>
+            <p>En tant que mandataire immobilier sous le statut de micro-entrepreneur, vous bénéficiez de plusieurs avantages fiscaux et d'une gestion simplifiée de votre activité.</p>
+            <h3>Cotisations Sociales</h3>
+            <p>Les cotisations sociales sont calculées en pourcentage de votre chiffre d'affaires. Pour les prestations de services (dont l'immobilier), le taux est d'environ 22% en 2024.</p>
+            <h3>TVA</h3>
+            <p>En tant que micro-entrepreneur, vous êtes en franchise de TVA tant que votre chiffre d'affaires ne dépasse pas 77 700 € pour une année civile complète.</p>
+            <h3>Impôt sur le Revenu</h3>
+            <p>Vous avez le choix entre le prélèvement libératoire (versement mensuel ou trimestriel d'un pourcentage de votre CA) ou l'imposition classique sur le revenu.</p>
+            <h3>Obligations Fiscales</h3>
+            <p>Vous devez tenir un livre de recettes et un registre des achats, conserver vos factures, et déclarer votre chiffre d'affaires mensuellement ou trimestriellement.</p>
+        </section>
     </div>
 
     <footer>
@@ -252,6 +394,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
     <script>
         $(document).ready(function() {
             $('a[href^="#"]').on('click', function(event) {
@@ -277,10 +420,10 @@
         });
 
         const backgroundImages = [
-            'https://images.pexels.com/photos/32870/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
-            'https://images.pexels.com/photos/53610/large-home-residential-house-architecture-53610.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
-            'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
-            'https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1'
+            'https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+            'https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+            'https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+            'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1'
         ];
 
         let currentImageIndex = 0;
@@ -289,11 +432,11 @@
         function changeBackground() {
             const nextImage = backgroundImages[(currentImageIndex + 1) % backgroundImages.length];
             const nextBg = currentBg === 1 ? 2 : 1;
-            
+
             document.getElementById(`bg${nextBg}`).style.backgroundImage = `url('${nextImage}')`;
             document.getElementById(`bg${nextBg}`).style.opacity = 1;
             document.getElementById(`bg${currentBg}`).style.opacity = 0;
-            
+
             currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
             currentBg = nextBg;
         }
@@ -303,6 +446,39 @@
         document.getElementById('bg2').style.opacity = 0;
 
         setInterval(changeBackground, 10000);
+
+        document.getElementById('cout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const chiffreAffaires = parseFloat(document.getElementById('chiffre-affaires').value);
+            const fraisInscription = parseFloat(document.getElementById('frais-inscription').value);
+            const fraisPublicite = parseFloat(document.getElementById('frais-publicite').value);
+            const fraisDeplacement = parseFloat(document.getElementById('frais-deplacement').value);
+
+            const cotisationsSociales = chiffreAffaires * 0.22; // 22% pour les prestations de services
+            const chargesTotales = fraisInscription + fraisPublicite + fraisDeplacement + cotisationsSociales;
+            const beneficeNet = chiffreAffaires - chargesTotales;
+
+            document.getElementById('cotisations-sociales').textContent = cotisationsSociales.toFixed(2);
+            document.getElementById('charges-totales').textContent = chargesTotales.toFixed(2);
+            document.getElementById('benefice-net').textContent = beneficeNet.toFixed(2);
+
+            document.getElementById('resultats').style.display = 'block';
+        });
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("YOUR_USER_ID"); // Replace with your actual EmailJS user ID
+        })();
+
+        // Function to send email reminders (example)
+        function sendReminder() {
+            emailjs.send("service_tgwdmyn", "template_db84nob", {
+                to_name: 'Nom du client',
+                from_name: 'Ricardo Monteiro Teixeira IAD France',
+                message: 'Rappel : Vous avez une visite prévue demain.'
+            });
+        }
     </script>
 </body>
 </html>
