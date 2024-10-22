@@ -1,0 +1,308 @@
+<html><head><base href="https://recrutement-mandataires-immobiliers.com/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejoignez-nous - Devenez Mandataire Immobilier Indépendant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-image: none;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 1s ease-in-out;
+        }
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: opacity 1s ease-in-out;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        header {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px 10px 0 0;
+        }
+        nav {
+            background-color: rgba(244, 244, 244, 0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #003366;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #003366;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #003366;
+            color: #fff;
+        }
+        .hero {
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            background-color: rgba(0, 51, 102, 0.8);
+            margin-top: 2rem;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6600;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .cta-button:hover {
+            background-color: #e55c00;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(229, 92, 0, 0.3);
+        }
+        .advantages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+        .advantage-card {
+            flex-basis: calc(50% - 20px);
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .advantage-card h3 {
+            color: #003366;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .advantage-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        #inscription {
+            background-color: #f9f9f9;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        #inscription h2 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+        #inscription p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+        #inscription a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #inscription a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 0 0 10px 10px;
+        }
+        .luxury-image {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            margin: 3rem auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-slideshow" id="bg1"></div>
+    <div class="bg-slideshow" id="bg2"></div>
+    
+    <header>
+        <h1>Recrutement de Mandataires Immobiliers Indépendants</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#avantages">Nos Avantages</a></li>
+            <li><a href="#inscription" class="active">Inscription</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Devenez Mandataire Immobilier Indépendant</h1>
+            <p>Rejoignez notre réseau de mandataires immobiliers indépendants et bénéficiez d'une opportunité unique pour développer votre carrière dans un secteur passionnant et dynamique.</p>
+            <a href="#inscription" class="cta-button">Postulez Maintenant</a>
+        </section>
+
+        <img src="https://images.pexels.com/photos/32870/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=1" alt="Vue extérieure d'une villa de luxe avec piscine" class="luxury-image" width="1200" height="800">
+
+        <section id="avantages" class="advantages">
+            <div class="advantage-card">
+                <h3>Indépendance et Flexibilité</h3>
+                <p>En tant que mandataire immobilier indépendant, vous êtes maître de votre temps et de votre activité. Vous avez la liberté de gérer votre propre emploi du temps, de choisir vos clients et vos projets. Que vous préfériez travailler tôt le matin ou tard le soir, vous avez la flexibilité d'adapter votre travail à votre style de vie. Cette autonomie vous permet de concilier vie professionnelle et vie personnelle comme jamais auparavant.</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Revenus Supplémentaires (MLM)</h3>
+                <p>Notre modèle de Multi-Level Marketing (MLM) vous offre des opportunités de revenus illimités. Non seulement vous gagnez des commissions sur vos propres ventes, mais vous avez aussi la possibilité de construire et de développer votre propre équipe. En recrutant et en formant d'autres agents, vous générez des revenus supplémentaires basés sur leurs performances. C'est une chance unique de créer une source de revenus passive et de développer votre propre réseau dans l'immobilier.</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Formation Continue</h3>
+                <p>Nous croyons fermement au développement professionnel continu. C'est pourquoi nous offrons des programmes de formation complets et réguliers. Que vous soyez débutant ou expérimenté, nos formations couvrent tous les aspects du métier : techniques de vente, négociation, droit immobilier, marketing digital, et bien plus encore. Vous aurez accès à des webinaires, des ateliers pratiques et des sessions de coaching personnalisées pour constamment améliorer vos compétences et rester à la pointe du secteur.</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Outils Digitaux Performants</h3>
+                <p>Pour réussir dans l'immobilier moderne, il est essentiel d'avoir les bons outils. Nous mettons à votre disposition une suite complète d'outils digitaux de pointe. Cela inclut un CRM avancé pour la gestion de vos clients, des outils de marketing automatisés pour booster votre visibilité en ligne, des plateformes de signature électronique pour faciliter les transactions, et bien plus encore. Ces outils vous permettront d'optimiser votre temps, d'augmenter votre productivité et de vous démarquer dans un marché compétitif.</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Frais Réduits</h3>
+                <p>L'un des avantages majeurs de notre modèle est la structure de frais réduits. Contrairement aux agences traditionnelles, vous n'avez pas à supporter les coûts élevés liés à la location d'un bureau ou à l'embauche de personnel. Cela signifie que vous gardez une part plus importante de vos commissions. De plus, notre système de commissions attractives sans plafonnement vous permet de maximiser vos gains en fonction de votre performance. Plus vous vendez, plus vous gagnez, sans limite.</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Développement International</h3>
+                <p>Votre ambition ne connaît pas de frontières ? Notre réseau non plus ! Nous offrons des opportunités uniques de développement international. Vous pouvez étendre votre activité au-delà de votre région, voire même à l'international. Imaginez-vous collaborer sur des transactions immobilières à l'étranger, développer un réseau international de clients, ou même ouvrir votre propre bureau dans un autre pays. Avec nous, votre potentiel de croissance est véritablement global.</p>
+            </div>
+        </section>
+
+        <section id="inscription">
+            <h2>Contactez-nous pour devenir Mandataire Immobilier</h2>
+            <p>Pour toute question sur le recrutement de mandataires immobiliers ou pour postuler, n'hésitez pas à nous contacter :</p>
+            <p>Email : <a href="mailto:ricardo.monteiro-teixeira@iadfrance.fr">ricardo.monteiro-teixeira@iadfrance.fr</a></p>
+            <p>Téléphone : +33 06 03 67 86 60</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute question sur le recrutement de mandataires immobiliers, n'hésitez pas à nous contacter :</p>
+            <p>Email : <a href="mailto:ricardo.monteiro-teixeira@iadfrance.fr">ricardo.monteiro-teixeira@iadfrance.fr</a></p>
+            <p>Téléphone : +33 06 03 67 86 60</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Recrutement Mandataires Immobiliers. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if( target.length ) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 100
+                    }, 1000);
+                }
+            });
+
+            $(window).scroll(function() {
+                var scrollDistance = $(window).scrollTop();
+
+                $('section').each(function(i) {
+                    if ($(this).position().top <= scrollDistance + 200) {
+                        $('nav ul li a.active').removeClass('active');
+                        $('nav ul li a').eq(i).addClass('active');
+                    }
+                });
+            }).scroll();
+        });
+
+        const backgroundImages = [
+            'https://images.pexels.com/photos/32870/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+            'https://images.pexels.com/photos/53610/large-home-residential-house-architecture-53610.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+            'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+            'https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1'
+        ];
+
+        let currentImageIndex = 0;
+        let currentBg = 1;
+
+        function changeBackground() {
+            const nextImage = backgroundImages[(currentImageIndex + 1) % backgroundImages.length];
+            const nextBg = currentBg === 1 ? 2 : 1;
+            
+            document.getElementById(`bg${nextBg}`).style.backgroundImage = `url('${nextImage}')`;
+            document.getElementById(`bg${nextBg}`).style.opacity = 1;
+            document.getElementById(`bg${currentBg}`).style.opacity = 0;
+            
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+            currentBg = nextBg;
+        }
+
+        document.getElementById('bg1').style.backgroundImage = `url('${backgroundImages[0]}')`;
+        document.getElementById('bg1').style.opacity = 1;
+        document.getElementById('bg2').style.opacity = 0;
+
+        setInterval(changeBackground, 10000);
+    </script>
+</body>
+</html>
