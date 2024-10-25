@@ -7,7 +7,8 @@
         body {
             font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #000;
+            font-weight: 600;
             margin: 0;
             padding: 0;
             background-image: none;
@@ -33,7 +34,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.6);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -117,7 +118,7 @@
         }
         .advantage-card {
             flex-basis: calc(50% - 20px);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.6);
             border-radius: 10px;
             padding: 2rem;
             margin-bottom: 2rem;
@@ -138,7 +139,7 @@
             line-height: 1.7;
         }
         #inscription {
-            background-color: rgba(249, 249, 249, 0.9);
+            background-color: rgba(249, 249, 249, 0.6);
             padding: 3rem;
             border-radius: 10px;
             margin-top: 3rem;
@@ -179,14 +180,10 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         .calculateur {
-            background-color: rgba(249, 249, 249, 0.9);
+            background-color: rgba(249, 249, 249, 0.6);
             padding: 3rem;
             border-radius: 10px;
             margin-top: 3rem;
-        }
-        .calculateur h2 {
-            color: #003366;
-            margin-bottom: 1rem;
         }
         .form-group {
             margin-bottom: 1rem;
@@ -214,12 +211,84 @@
         }
         .legal {
             margin-top: 3rem;
-            background-color: rgba(249, 249, 249, 0.9);
+            background-color: rgba(249, 249, 249, 0.6);
             padding: 3rem;
             border-radius: 10px;
             text-align: left;
         }
+        .info-bulle {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .resultats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .resultat-col {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .recommendation {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #e6f3ff;
+            border-radius: 8px;
+        }
+        .form-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .form-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-section h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+        .optimisation {
+            background: #e6f3ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .legal h3 {
+            color: #003366;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .legal p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
         @media (max-width: 768px) {
+            .container {
+                width: 90%; /* Reduce width on mobile */
+                padding: 5px; /* Reduce padding on mobile */
+                margin: 0 auto;
+            }
+            .hero, 
+            .calculateur, 
+            #inscription, 
+            .legal {
+                padding: 1rem; /* Reduce padding on mobile */
+            }
+            .advantage-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            .form-section {
+                padding: 1rem;
+            }
             nav ul {
                 flex-direction: column;
                 align-items: center;
@@ -246,18 +315,6 @@
                 font-size: 1.1rem;
             }
             .advantage-card {
-                padding: 1.5rem;
-            }
-            .advantage-card h3 {
-                font-size: 1.3rem;
-            }
-            .advantage-card p {
-                font-size: 1rem;
-            }
-            .calculateur, #inscription, .legal {
-                padding: 2rem;
-            }
-            .advantage-card {
                 flex-basis: 100%;
             }
             .form-group input {
@@ -269,6 +326,18 @@
                 padding: 15px;
                 font-size: 1.1rem;
             }
+            .resultats-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                width: 92%;
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -276,7 +345,7 @@
     <div class="bg-slideshow" id="bg1"></div>
     <div class="bg-slideshow" id="bg2"></div>
     
-<header>
+    <header>
         <h1>Recrutement de Mandataires Immobiliers Indépendants</h1>
     </header>
     
@@ -285,6 +354,8 @@
             <li><a href="#avantages">Nos Avantages</a></li>
             <li><a href="#inscription">Inscription</a></li>
             <li><a href="#calculateur">Calculateur de coûts</a></li>
+            <li><a href="#calculateur-avance">Calculateur Avancé</a></li>
+            <li><a href="#comparateur">Comparateur de Statuts</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#legal">Aspects Légaux</a></li>
         </ul>
@@ -330,7 +401,7 @@
             </div>
         </section>
 
-        <section id="inscription">
+         <section id="inscription">
             <h2>Contactez-nous pour devenir Mandataire Immobilier</h2>
             <p>Pour toute question sur le recrutement de mandataires immobiliers ou pour postuler, n'hésitez pas à nous contacter :</p>
             <p>Email : <a href="mailto:ricardo.monteiro-teixeira@iadfrance.fr">ricardo.monteiro-teixeira@iadfrance.fr</a></p>
@@ -374,28 +445,294 @@
             </div>
         </section>
 
+        <section id="calculateur-avance" class="calculateur">
+            <h2>Calculateur Avancé de Revenus d'Entrepreneur</h2>
+            
+            <form id="calculateur-avance-form">
+                <div class="form-sections">
+                    <div class="form-section">
+                        <h3>Revenus</h3>
+                        <div class="form-group">
+                            <label for="ca-annuel">Chiffre d'affaires annuel prévu (€)</label>
+                            <input type="number" id="ca-annuel" required>
+                            <div class="info-bulle">Entrez votre chiffre d'affaires prévisionnel annuel HT</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="revenus-anterieurs">Revenus déclarés année précédente (€)</label>
+                            <input type="number" id="revenus-anterieurs">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Charges</h3>
+                        <div class="form-group">
+                            <label for="charges-fixes">Charges fixes annuelles (€)</label>
+                            <input type="number" id="charges-fixes">
+                        </div>
+                        <div class="form-group">
+                            <label for="charges-fixes-pct">Charges fixes (%)</label>
+                            <input type="number" id="charges-fixes-pct" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="charges-variables">Charges variables annuelles (€)</label>
+                            <input type="number" id="charges-variables">
+                        </div>
+                        <div class="form-group">
+                            <label for="charges-variables-pct">Charges variables (%)</label>
+                            <input type="number" id="charges-variables-pct" min="0" max="100">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Frais Professionnels</h3>
+                        <div class="form-group">
+                            <label for="loyer">Loyer annuel (€)</label>
+                            <input type="number" id="loyer">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone/Internet annuel (€)</label>
+                            <input type="number" id="telephone">
+                        </div>
+                        <div class="form-group">
+                            <label for="equipements">Équipements annuel (€)</label>
+                            <input type="number" id="equipements">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Paramètres</h3>
+                        <div class="form-group">
+                            <label for="type-clientele">Type de clientèle</label>
+                            <select id="type-clientele">
+                                <option value="particuliers">Particuliers</option>
+                                <option value="entreprises">Entreprises</option>
+                                <option value="mixte">Mixte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">Région</label>
+                            <select id="region">
+                                <option value="idf">Île-de-France</option>
+                                <option value="autre">Autres régions</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="cta-button">Calculer</button>
+            </form>
+
+            <div id="resultats-avances" class="resultats" style="display:none">
+                <div class="resultats-grid">
+                    <div class="resultat-col">
+                        <h3>Auto-entrepreneur</h3>
+                        <canvas id="chart-ae-detaille"></canvas>
+                        <div class="details">
+                            <p>Chiffre d'affaires : <span id="ca-ae"></span> €</p>
+                            <p>Charges sociales : <span id="charges-soc-ae"></span> €</p>
+                            <p>Charges fixes : <span id="charges-fixes-ae"></span> €</p>
+                            <p>Charges variables : <span id="charges-var-ae"></span> €</p>
+                            <p>Impôt sur le revenu : <span id="ir-ae"></span> €</p>
+                            <p>Revenu net : <span id="revenu-net-ae"></span> €</p>
+                        </div>
+                    </div>
+                    <div class="resultat-col">
+                        <h3>Entrepreneur Individuel</h3>
+                        <canvas id="chart-ei-detaille"></canvas>
+                        <div class="details">
+                            <p>Chiffre d'affaires : <span id="ca-ei"></span> €</p>
+                            <p>Charges sociales : <span id="charges-soc-ei"></span> €</p>
+                            <p>Charges fixes : <span id="charges-fixes-ei"></span> €</p>
+                            <p>Charges variables : <span id="charges-var-ei"></span> €</p>
+                            <p>Impôt sur le revenu : <span id="ir-ei"></span> €</p>
+                            <p>Revenu net : <span id="revenu-net-ei"></span> €</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="optimisation">
+                    <h3>Recommandations d'optimisation</h3>
+                    <div id="recommandations"></div>
+                </div>
+
+                <button id="print-results" class="cta-button">Imprimer les résultats</button>
+            </div>
+        </section>
+
+        <section id="comparateur" class="calculateur">
+            <h2>Comparateur de Statuts d'Entrepreneur</h2>
+            <p>Comparez les avantages financiers entre le statut d'auto-entrepreneur et d'entrepreneur individuel :</p>
+            
+            <form id="comparateur-form">
+                <div class="form-group">
+                    <label for="ca-previsionnel">Chiffre d'affaires annuel prévu (€) :</label>
+                    <input type="number" id="ca-previsionnel" required>
+                    <div class="info-bulle">
+                        ℹ️ Entrez votre chiffre d'affaires prévisionnel annuel HT
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="charges-pourcentage">Charges (%) :</label>
+                    <input type="number" id="charges-pourcentage" min="0" max="100" required>
+                    <div class="info-bulle">
+                        ℹ️ Pourcentage estimé de vos charges professionnelles
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Type d'activité :</label>
+                    <select id="type-activite">
+                        <option value="services">Prestations de services</option>
+                        <option value="commerce">Vente de marchandises</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="cta-button">Comparer les statuts</button>
+            </form>
+
+            <div id="resultats-comparaison" class="resultats" style="display: none;">
+                <div class="resultats-grid">
+                    <div class="resultat-col">
+                        <h3>Auto-entrepreneur</h3>
+                        <canvas id="chart-ae"></canvas>
+                        <div class="details">
+                            <p>Charges sociales : <span id="charges-ae"></span> €</p>
+                            <p>Impôt sur le revenu : <span id="impot-ae"></span> €</p>
+                            <p>Revenu net : <span id="revenu-ae"></span> €</p>
+                        </div>
+                    </div>
+                    <div class="resultat-col">
+                        <h3>Entrepreneur Individuel</h3>
+                        <canvas id="chart-ei"></canvas>
+                        <div class="details">
+                            <p>Charges sociales : <span id="charges-ei"></span> €</p>
+                            <p>Impôt sur le revenu : <span id="impot-ei"></span> €</p>
+                            <p>Revenu net : <span id="revenu-ei"></span> €</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="recommendation" class="recommendation"></div>
+            </div>
+        </section>
+
         <section id="legal" class="legal">
             <h2>Conditions Légales et Avantages Fiscaux</h2>
+            
             <h3>Statut de Micro-entrepreneur</h3>
             <p>En tant que mandataire immobilier sous le statut de micro-entrepreneur, vous bénéficiez de plusieurs avantages fiscaux et d'une gestion simplifiée de votre activité.</p>
-            <h3>Cotisations Sociales</h3>
+            
+            <h3>Cotisations Sociales pour Micro-entrepreneurs</h3>
             <p>Les cotisations sociales sont calculées en pourcentage de votre chiffre d'affaires. Pour les prestations de services (dont l'immobilier), le taux standard est d'environ 22% en 2023. Les bénéficiaires de l'ACRE (Aide à la Création ou à la Reprise d'Entreprise) bénéficient d'un taux réduit de 11,60% pendant la première année d'activité.</p>
-            <h3>TVA</h3>
-            <p>En tant que micro-entrepreneur, vous êtes en franchise de TVA tant que votre chiffre d'affaires ne dépasse pas 77 700 € pour une année civile complète.</p>
-            <h3>Impôt sur le Revenu</h3>
-            <p>Vous avez le choix entre le prélèvement libératoire (versement mensuel ou trimestriel d'un pourcentage de votre CA) ou l'imposition classique sur le revenu.</p>
-            <h3>Obligations Fiscales</h3>
-            <p>Vous devez tenir un livre de recettes et un registre des achats, conserver vos factures, et déclarer votre chiffre d'affaires mensuellement ou trimestriellement.</p>
+
+            <h3>Statut d'Entrepreneur Individuel en Immobilier</h3>
+            <p>En tant qu'entrepreneur individuel dans l'immobilier, vous bénéficiez de plusieurs avantages fiscaux et d'une gestion simplifiée de votre activité.</p>
+
+            <h3>Cotisations Sociales pour Entrepreneurs Individuels</h3>
+            <p>Les cotisations sociales sont calculées en pourcentage de votre bénéfice net. Pour les prestations de services (dont l'immobilier), le taux des cotisations sociales est variable, généralement autour de 45% du bénéfice. Les bénéficiaires de l'ACRE peuvent bénéficier d'une réduction des cotisations pendant la première année d'activité.</p>
+
+            <h3>TVA pour Entrepreneurs Individuels</h3>
+            <p>En tant qu'entrepreneur individuel, vous êtes soumis au régime de la TVA si votre chiffre d'affaires dépasse les seuils légaux en vigueur. Vous pouvez également opter pour la franchise en base de TVA tant que vous ne dépassez pas un certain seuil.</p>
+
+            <h3>Impôt sur le Revenu pour Entrepreneurs Individuels</h3>
+            <p>L'entrepreneur individuel est soumis à l'impôt sur le revenu (IR). Les bénéfices de l'activité sont intégrés au revenu global du foyer et imposés selon le barème progressif de l'impôt sur le revenu. Il est possible de déduire certaines charges professionnelles (loyer, frais de véhicule, etc.) afin de réduire le bénéfice imposable.</p>
+
+            <h3>Obligations Fiscales pour Entrepreneurs Individuels</h3>
+            <p>Vous devez tenir une comptabilité rigoureuse, comprenant un livre des recettes et un registre des dépenses. Les obligations comptables peuvent être allégées par rapport à d'autres statuts, mais restent indispensables pour justifier le calcul du bénéfice. Les déclarations fiscales doivent être effectuées chaque année, avec une estimation du bénéfice prévisionnel pour ajuster les acomptes.</p>
+
+            <h3>Avantages Spécifiques au Secteur Immobilier</h3>
+            <p>La possibilité de déduire les frais professionnels (frais de déplacement, téléphone, matériel de prospection) permet de réduire l'assiette imposable. Les charges sociales sont proportionnelles au bénéfice, ce qui apporte de la flexibilité en période de fluctuations de revenus. La simplicité des démarches administratives comparée à d'autres statuts juridiques permet de se concentrer sur le développement de l'activité immobilière.</p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2024 Recrutement Mandataires Immobiliers. Tous droits réservés.</p>
+        <p>&copy; 2023 Recrutement Mandataires Immobiliers. Tous droits réservés.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        function calculateAutoEntrepreneur(data) {
+            const cotisationsSociales = data.ca * 0.22;
+            const chargesFixesTotal = data.chargesFixesMontant + (data.ca * (data.chargesFixesPct / 100));
+            const chargesVarTotal = data.chargesVarMontant + (data.ca * (data.chargesVarPct / 100));
+            const chargesOperationnelles = data.loyer + data.telephone + data.equipements;
+            
+            const totalCharges = cotisationsSociales + chargesFixesTotal + chargesVarTotal + chargesOperationnelles;
+            const revenuBrut = data.ca - totalCharges;
+            
+            const impotRevenu = revenuBrut * 0.15;
+            const revenuNet = revenuBrut - impotRevenu;
+            
+            return {
+                chargesSociales: cotisationsSociales,
+                chargesFixes: chargesFixesTotal,
+                chargesVariables: chargesVarTotal,
+                chargesOp: chargesOperationnelles,
+                impots: impotRevenu,
+                revenuNet: revenuNet
+            };
+        }
+
+        function calculateEntrepreneurIndividuel(data) {
+            const cotisationsSociales = data.ca * 0.45;
+            const chargesFixesTotal = data.chargesFixesMontant + (data.ca * (data.chargesFixesPct / 100));
+            const chargesVarTotal = data.chargesVarMontant + (data.ca * (data.chargesVarPct / 100));
+            const chargesOperationnelles = data.loyer + data.telephone + data.equipements;
+            
+            const totalCharges = cotisationsSociales + chargesFixesTotal + chargesVarTotal + chargesOperationnelles;
+            const revenuBrut = data.ca - totalCharges;
+            
+            const impotRevenu = revenuBrut * 0.20;
+            const revenuNet = revenuBrut - impotRevenu;
+            
+            return {
+                chargesSociales: cotisationsSociales,
+                chargesFixes: chargesFixesTotal,
+                chargesVariables: chargesVarTotal,
+                chargesOp: chargesOperationnelles,
+                impots: impotRevenu,
+                revenuNet: revenuNet
+            };
+        }
+
+        function updateResultsUI(resultsAE, resultsEI) {
+            document.getElementById('charges-soc-ae').textContent = resultsAE.chargesSociales.toFixed(2);
+            document.getElementById('charges-fixes-ae').textContent = resultsAE.chargesFixes.toFixed(2);
+            document.getElementById('charges-var-ae').textContent = resultsAE.chargesVariables.toFixed(2);
+            document.getElementById('ir-ae').textContent = resultsAE.impots.toFixed(2);
+            document.getElementById('revenu-net-ae').textContent = resultsAE.revenuNet.toFixed(2);
+            
+            document.getElementById('charges-soc-ei').textContent = resultsEI.chargesSociales.toFixed(2);
+            document.getElementById('charges-fixes-ei').textContent = resultsEI.chargesFixes.toFixed(2);
+            document.getElementById('charges-var-ei').textContent = resultsEI.chargesVariables.toFixed(2);
+            document.getElementById('ir-ei').textContent = resultsEI.impots.toFixed(2);
+            document.getElementById('revenu-net-ei').textContent = resultsEI.revenuNet.toFixed(2);
+        }
+
+        function generateRecommendations(resultsAE, resultsEI, data) {
+            const recommandations = document.getElementById('recommandations');
+            let html = '<ul>';
+            
+            if (resultsAE.revenuNet > resultsEI.revenuNet) {
+                html += '<li>Le statut auto-entrepreneur semble plus avantageux pour votre situation.</li>';
+            } else {
+                html += '<li>Le statut entrepreneur individuel semble plus avantageux pour votre situation.</li>';
+            }
+            
+            if (data.ca > 72600) {
+                html += '<li>Attention : votre CA dépasse le seuil de la franchise TVA pour les services.</li>';
+            }
+            
+            if (data.chargesFixesPct + data.chargesVarPct > 50) {
+                html += '<li>Vos charges semblent élevées. Envisagez une optimisation de vos coûts.</li>';
+            }
+            
+            html += '</ul>';
+            recommandations.innerHTML = html;
+        }
+
         $(document).ready(function() {
             $('a[href^="#"]').on('click', function(event) {
                 var target = $(this.getAttribute('href'));
@@ -418,6 +755,107 @@
                 });
             }).scroll();
         });
+
+        document.getElementById('cout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const chiffreAffaires = parseFloat(document.getElementById('chiffre-affaires').value);
+            const fraisInscription = parseFloat(document.getElementById('frais-inscription').value);
+            const fraisPublicite = parseFloat(document.getElementById('frais-publicite').value);
+            const fraisDeplacement = parseFloat(document.getElementById('frais-deplacement').value);
+
+            const cotisationsSociales = chiffreAffaires * 0.22;
+            const chargesTotales = fraisInscription + fraisPublicite + fraisDeplacement + cotisationsSociales;
+            const beneficeNet = chiffreAffaires - chargesTotales;
+
+            document.getElementById('cotisations-sociales').textContent = cotisationsSociales.toFixed(2);
+            document.getElementById('charges-totales').textContent = chargesTotales.toFixed(2);
+            document.getElementById('benefice-net').textContent = beneficeNet.toFixed(2);
+
+            document.getElementById('resultats').style.display = 'block';
+        });
+
+        document.getElementById('calculateur-avance-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const data = {
+                ca: parseFloat(document.getElementById('ca-annuel').value),
+                revenusAnterieurs: parseFloat(document.getElementById('revenus-anterieurs').value) || 0,
+                chargesFixesMontant: parseFloat(document.getElementById('charges-fixes').value) || 0,
+                chargesFixesPct: parseFloat(document.getElementById('charges-fixes-pct').value) || 0,
+                chargesVarMontant: parseFloat(document.getElementById('charges-variables').value) || 0,
+                chargesVarPct: parseFloat(document.getElementById('charges-variables-pct').value) || 0,
+                loyer: parseFloat(document.getElementById('loyer').value) || 0,
+                telephone: parseFloat(document.getElementById('telephone').value) || 0,
+                equipements: parseFloat(document.getElementById('equipements').value) || 0,
+                typeClientele: document.getElementById('type-clientele').value,
+                region: document.getElementById('region').value
+            };
+
+            const resultsAE = calculateAutoEntrepreneur(data);
+            const resultsEI = calculateEntrepreneurIndividuel(data);
+
+            updateResultsUI(resultsAE, resultsEI);
+            generateRecommendations(resultsAE, resultsEI, data);
+            document.getElementById('resultats-avances').style.display = 'block';
+        });
+
+        document.getElementById('comparateur-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const ca = parseFloat(document.getElementById('ca-previsionnel').value);
+            const chargesPct = parseFloat(document.getElementById('charges-pourcentage').value);
+            const typeActivite = document.getElementById('type-activite').value;
+
+            const tauxCotisationsAE = typeActivite === 'services' ? 0.22 : 0.12;
+            const chargesAE = ca * tauxCotisationsAE;
+            const revenuBrutAE = ca - (ca * (chargesPct / 100));
+            const revenuNetAE = revenuBrutAE - chargesAE;
+            
+            const tauxCotisationsEI = 0.45;
+            const chargesEI = ca * tauxCotisationsEI;
+            const revenuBrutEI = ca - (ca * (chargesPct / 100));
+            const revenuNetEI = revenuBrutEI - chargesEI;
+
+            document.getElementById('charges-ae').textContent = chargesAE.toFixed(2);
+            document.getElementById('revenu-ae').textContent = revenuNetAE.toFixed(2);
+            document.getElementById('charges-ei').textContent = chargesEI.toFixed(2);
+            document.getElementById('revenu-ei').textContent = revenuNetEI.toFixed(2);
+
+            createChart('chart-ae', revenuNetAE, chargesAE, ca * (chargesPct / 100));
+            createChart('chart-ei', revenuNetEI, chargesEI, ca * (chargesPct / 100));
+
+            const recommendation = document.getElementById('recommendation');
+            if(revenuNetAE > revenuNetEI) {
+                recommendation.innerHTML = `<strong>Recommendation :</strong> Le statut d'auto-entrepreneur semble plus avantageux dans votre situation.`;
+            } else {
+                recommendation.innerHTML = `<strong>Recommendation :</strong> Le statut d'entrepreneur individuel semble plus avantageux dans votre situation.`;
+            }
+
+            document.getElementById('resultats-comparaison').style.display = 'block';
+        });
+
+        function createChart(canvasId, revenuNet, chargesSociales, chargesPro) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Revenu net', 'Charges sociales', 'Charges pro.'],
+                    datasets: [{
+                        data: [revenuNet, chargesSociales, chargesPro],
+                        backgroundColor: ['#4CAF50', '#FFA726', '#EF5350']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
 
         const backgroundImages = [
             'https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
@@ -446,39 +884,6 @@
         document.getElementById('bg2').style.opacity = 0;
 
         setInterval(changeBackground, 10000);
-
-        document.getElementById('cout-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const chiffreAffaires = parseFloat(document.getElementById('chiffre-affaires').value);
-            const fraisInscription = parseFloat(document.getElementById('frais-inscription').value);
-            const fraisPublicite = parseFloat(document.getElementById('frais-publicite').value);
-            const fraisDeplacement = parseFloat(document.getElementById('frais-deplacement').value);
-
-            const cotisationsSociales = chiffreAffaires * 0.22; // 22% pour les prestations de services
-            const chargesTotales = fraisInscription + fraisPublicite + fraisDeplacement + cotisationsSociales;
-            const beneficeNet = chiffreAffaires - chargesTotales;
-
-            document.getElementById('cotisations-sociales').textContent = cotisationsSociales.toFixed(2);
-            document.getElementById('charges-totales').textContent = chargesTotales.toFixed(2);
-            document.getElementById('benefice-net').textContent = beneficeNet.toFixed(2);
-
-            document.getElementById('resultats').style.display = 'block';
-        });
-
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("YOUR_USER_ID"); // Replace with your actual EmailJS user ID
-        })();
-
-        // Function to send email reminders (example)
-        function sendReminder() {
-            emailjs.send("service_tgwdmyn", "template_db84nob", {
-                to_name: 'Nom du client',
-                from_name: 'Ricardo Monteiro Teixeira IAD France',
-                message: 'Rappel : Vous avez une visite prévue demain.'
-            });
-        }
     </script>
 </body>
 </html>
