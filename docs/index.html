@@ -1,6 +1,7 @@
 <html><head><base href="https://recrutement-mandataires-immobiliers.com/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; upgrade-insecure-requests;">
     <title>Rejoignez-nous - Devenez Mandataire Immobilier Indépendant</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -8,7 +9,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
             color: #000;
-            font-weight: 600;
+            font-weight: 700;
             margin: 0;
             padding: 0;
             background-image: none;
@@ -34,7 +35,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.4);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -272,15 +273,15 @@
         }
         @media (max-width: 768px) {
             .container {
-                width: 90%; /* Reduce width on mobile */
-                padding: 5px; /* Reduce padding on mobile */
+                width: 85%;
+                padding: 5px;
                 margin: 0 auto;
             }
             .hero, 
             .calculateur, 
             #inscription, 
             .legal {
-                padding: 1rem; /* Reduce padding on mobile */
+                padding: 1rem;
             }
             .advantage-card {
                 padding: 1rem;
@@ -349,8 +350,10 @@
         <h1>Recrutement de Mandataires Immobiliers Indépendants</h1>
     </header>
     
+    <!-- Navigation Section -->
     <nav>
         <ul>
+            <!-- Navigation items -->
             <li><a href="#avantages">Nos Avantages</a></li>
             <li><a href="#inscription">Inscription</a></li>
             <li><a href="#calculateur">Calculateur de coûts</a></li>
@@ -401,7 +404,7 @@
             </div>
         </section>
 
-         <section id="inscription">
+        <section id="inscription">
             <h2>Contactez-nous pour devenir Mandataire Immobilier</h2>
             <p>Pour toute question sur le recrutement de mandataires immobiliers ou pour postuler, n'hésitez pas à nous contacter :</p>
             <p>Email : <a href="mailto:ricardo.monteiro-teixeira@iadfrance.fr">ricardo.monteiro-teixeira@iadfrance.fr</a></p>
@@ -653,237 +656,275 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        function calculateAutoEntrepreneur(data) {
-            const cotisationsSociales = data.ca * 0.22;
-            const chargesFixesTotal = data.chargesFixesMontant + (data.ca * (data.chargesFixesPct / 100));
-            const chargesVarTotal = data.chargesVarMontant + (data.ca * (data.chargesVarPct / 100));
-            const chargesOperationnelles = data.loyer + data.telephone + data.equipements;
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (
+                e.key === 'u' || 
+                e.key === 'U' || 
+                e.key === 's' || 
+                e.key === 'S' ||
+                e.key === 'q' ||
+                e.key === 'Q'
+            )) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        (function() {
+            setInterval(function() {
+                debugger;
+            }, 100);
             
-            const totalCharges = cotisationsSociales + chargesFixesTotal + chargesVarTotal + chargesOperationnelles;
-            const revenuBrut = data.ca - totalCharges;
-            
-            const impotRevenu = revenuBrut * 0.15;
-            const revenuNet = revenuBrut - impotRevenu;
-            
-            return {
-                chargesSociales: cotisationsSociales,
-                chargesFixes: chargesFixesTotal,
-                chargesVariables: chargesVarTotal,
-                chargesOp: chargesOperationnelles,
-                impots: impotRevenu,
-                revenuNet: revenuNet
+            const devtools = {
+                isOpen: false,
+                orientation: undefined
             };
-        }
 
-        function calculateEntrepreneurIndividuel(data) {
-            const cotisationsSociales = data.ca * 0.45;
-            const chargesFixesTotal = data.chargesFixesMontant + (data.ca * (data.chargesFixesPct / 100));
-            const chargesVarTotal = data.chargesVarMontant + (data.ca * (data.chargesVarPct / 100));
-            const chargesOperationnelles = data.loyer + data.telephone + data.equipements;
-            
-            const totalCharges = cotisationsSociales + chargesFixesTotal + chargesVarTotal + chargesOperationnelles;
-            const revenuBrut = data.ca - totalCharges;
-            
-            const impotRevenu = revenuBrut * 0.20;
-            const revenuNet = revenuBrut - impotRevenu;
-            
-            return {
-                chargesSociales: cotisationsSociales,
-                chargesFixes: chargesFixesTotal,
-                chargesVariables: chargesVarTotal,
-                chargesOp: chargesOperationnelles,
-                impots: impotRevenu,
-                revenuNet: revenuNet
-            };
-        }
+            const threshold = 160;
 
-        function updateResultsUI(resultsAE, resultsEI) {
-            document.getElementById('charges-soc-ae').textContent = resultsAE.chargesSociales.toFixed(2);
-            document.getElementById('charges-fixes-ae').textContent = resultsAE.chargesFixes.toFixed(2);
-            document.getElementById('charges-var-ae').textContent = resultsAE.chargesVariables.toFixed(2);
-            document.getElementById('ir-ae').textContent = resultsAE.impots.toFixed(2);
-            document.getElementById('revenu-net-ae').textContent = resultsAE.revenuNet.toFixed(2);
-            
-            document.getElementById('charges-soc-ei').textContent = resultsEI.chargesSociales.toFixed(2);
-            document.getElementById('charges-fixes-ei').textContent = resultsEI.chargesFixes.toFixed(2);
-            document.getElementById('charges-var-ei').textContent = resultsEI.chargesVariables.toFixed(2);
-            document.getElementById('ir-ei').textContent = resultsEI.impots.toFixed(2);
-            document.getElementById('revenu-net-ei').textContent = resultsEI.revenuNet.toFixed(2);
-        }
-
-        function generateRecommendations(resultsAE, resultsEI, data) {
-            const recommandations = document.getElementById('recommandations');
-            let html = '<ul>';
-            
-            if (resultsAE.revenuNet > resultsEI.revenuNet) {
-                html += '<li>Le statut auto-entrepreneur semble plus avantageux pour votre situation.</li>';
-            } else {
-                html += '<li>Le statut entrepreneur individuel semble plus avantageux pour votre situation.</li>';
-            }
-            
-            if (data.ca > 72600) {
-                html += '<li>Attention : votre CA dépasse le seuil de la franchise TVA pour les services.</li>';
-            }
-            
-            if (data.chargesFixesPct + data.chargesVarPct > 50) {
-                html += '<li>Vos charges semblent élevées. Envisagez une optimisation de vos coûts.</li>';
-            }
-            
-            html += '</ul>';
-            recommandations.innerHTML = html;
-        }
-
-        $(document).ready(function() {
-            $('a[href^="#"]').on('click', function(event) {
-                var target = $(this.getAttribute('href'));
-                if( target.length ) {
-                    event.preventDefault();
-                    $('html, body').stop().animate({
-                        scrollTop: target.offset().top - 100
-                    }, 1000);
+            setInterval(function() {
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                
+                if(widthThreshold || heightThreshold) {
+                    document.body.innerHTML = '';
+                    window.location.reload();
                 }
-            });
+            }, 1000);
+        })();
+        (function(){
+            function calculateAutoEntrepreneur(data) {
+                const cotisationsSociales = data.ca * 0.22;
+                const chargesFixesTotal = data.chargesFixesMontant + (data.ca * (data.chargesFixesPct / 100));
+                const chargesVarTotal = data.chargesVarMontant + (data.ca * (data.chargesVarPct / 100));
+                const chargesOperationnelles = data.loyer + data.telephone + data.equipements;
+                
+                const totalCharges = cotisationsSociales + chargesFixesTotal + chargesVarTotal + chargesOperationnelles;
+                const revenuBrut = data.ca - totalCharges;
+                
+                const impotRevenu = revenuBrut * 0.15;
+                const revenuNet = revenuBrut - impotRevenu;
+                
+                return {
+                    chargesSociales: cotisationsSociales,
+                    chargesFixes: chargesFixesTotal,
+                    chargesVariables: chargesVarTotal,
+                    chargesOp: chargesOperationnelles,
+                    impots: impotRevenu,
+                    revenuNet: revenuNet
+                };
+            }
 
-            $(window).scroll(function() {
-                var scrollDistance = $(window).scrollTop();
+            function calculateEntrepreneurIndividuel(data) {
+                const cotisationsSociales = data.ca * 0.45;
+                const chargesFixesTotal = data.chargesFixesMontant + (data.ca * (data.chargesFixesPct / 100));
+                const chargesVarTotal = data.chargesVarMontant + (data.ca * (data.chargesVarPct / 100));
+                const chargesOperationnelles = data.loyer + data.telephone + data.equipements;
+                
+                const totalCharges = cotisationsSociales + chargesFixesTotal + chargesVarTotal + chargesOperationnelles;
+                const revenuBrut = data.ca - totalCharges;
+                
+                const impotRevenu = revenuBrut * 0.20;
+                const revenuNet = revenuBrut - impotRevenu;
+                
+                return {
+                    chargesSociales: cotisationsSociales,
+                    chargesFixes: chargesFixesTotal,
+                    chargesVariables: chargesVarTotal,
+                    chargesOp: chargesOperationnelles,
+                    impots: impotRevenu,
+                    revenuNet: revenuNet
+                };
+            }
 
-                $('section').each(function(i) {
-                    if ($(this).position().top <= scrollDistance + 200) {
-                        $('nav ul li a.active').removeClass('active');
-                        $('nav ul li a').eq(i).addClass('active');
+            function updateResultsUI(resultsAE, resultsEI) {
+                document.getElementById('charges-soc-ae').textContent = resultsAE.chargesSociales.toFixed(2);
+                document.getElementById('charges-fixes-ae').textContent = resultsAE.chargesFixes.toFixed(2);
+                document.getElementById('charges-var-ae').textContent = resultsAE.chargesVariables.toFixed(2);
+                document.getElementById('ir-ae').textContent = resultsAE.impots.toFixed(2);
+                document.getElementById('revenu-net-ae').textContent = resultsAE.revenuNet.toFixed(2);
+                
+                document.getElementById('charges-soc-ei').textContent = resultsEI.chargesSociales.toFixed(2);
+                document.getElementById('charges-fixes-ei').textContent = resultsEI.chargesFixes.toFixed(2);
+                document.getElementById('charges-var-ei').textContent = resultsEI.chargesVariables.toFixed(2);
+                document.getElementById('ir-ei').textContent = resultsEI.impots.toFixed(2);
+                document.getElementById('revenu-net-ei').textContent = resultsEI.revenuNet.toFixed(2);
+            }
+
+            function generateRecommendations(resultsAE, resultsEI, data) {
+                const recommandations = document.getElementById('recommandations');
+                let html = '<ul>';
+                
+                if (resultsAE.revenuNet > resultsEI.revenuNet) {
+                    html += '<li>Le statut auto-entrepreneur semble plus avantageux pour votre situation.</li>';
+                } else {
+                    html += '<li>Le statut entrepreneur individuel semble plus avantageux pour votre situation.</li>';
+                }
+                
+                if (data.ca > 72600) {
+                    html += '<li>Attention : votre CA dépasse le seuil de la franchise TVA pour les services.</li>';
+                }
+                
+                if (data.chargesFixesPct + data.chargesVarPct > 50) {
+                    html += '<li>Vos charges semblent élevées. Envisagez une optimisation de vos coûts.</li>';
+                }
+                
+                html += '</ul>';
+                recommandations.innerHTML = html;
+            }
+
+            $(document).ready(function() {
+                $('a[href^="#"]').on('click', function(event) {
+                    var target = $(this.getAttribute('href'));
+                    if( target.length ) {
+                        event.preventDefault();
+                        $('html, body').stop().animate({
+                            scrollTop: target.offset().top - 100
+                        }, 1000);
                     }
                 });
-            }).scroll();
-        });
 
-        document.getElementById('cout-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+                $(window).scroll(function() {
+                    var scrollDistance = $(window).scrollTop();
 
-            const chiffreAffaires = parseFloat(document.getElementById('chiffre-affaires').value);
-            const fraisInscription = parseFloat(document.getElementById('frais-inscription').value);
-            const fraisPublicite = parseFloat(document.getElementById('frais-publicite').value);
-            const fraisDeplacement = parseFloat(document.getElementById('frais-deplacement').value);
+                    $('section').each(function(i) {
+                        if ($(this).position().top <= scrollDistance + 200) {
+                            $('nav ul li a.active').removeClass('active');
+                            $('nav ul li a').eq(i).addClass('active');
+                        }
+                    });
+                }).scroll();
+            });
 
-            const cotisationsSociales = chiffreAffaires * 0.22;
-            const chargesTotales = fraisInscription + fraisPublicite + fraisDeplacement + cotisationsSociales;
-            const beneficeNet = chiffreAffaires - chargesTotales;
+            document.getElementById('cout-form').addEventListener('submit', function(e) {
+                e.preventDefault();
 
-            document.getElementById('cotisations-sociales').textContent = cotisationsSociales.toFixed(2);
-            document.getElementById('charges-totales').textContent = chargesTotales.toFixed(2);
-            document.getElementById('benefice-net').textContent = beneficeNet.toFixed(2);
+                const chiffreAffaires = parseFloat(document.getElementById('chiffre-affaires').value);
+                const fraisInscription = parseFloat(document.getElementById('frais-inscription').value);
+                const fraisPublicite = parseFloat(document.getElementById('frais-publicite').value);
+                const fraisDeplacement = parseFloat(document.getElementById('frais-deplacement').value);
 
-            document.getElementById('resultats').style.display = 'block';
-        });
+                const cotisationsSociales = chiffreAffaires * 0.22;
+                const chargesTotales = fraisInscription + fraisPublicite + fraisDeplacement + cotisationsSociales;
+                const beneficeNet = chiffreAffaires - chargesTotales;
 
-        document.getElementById('calculateur-avance-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const data = {
-                ca: parseFloat(document.getElementById('ca-annuel').value),
-                revenusAnterieurs: parseFloat(document.getElementById('revenus-anterieurs').value) || 0,
-                chargesFixesMontant: parseFloat(document.getElementById('charges-fixes').value) || 0,
-                chargesFixesPct: parseFloat(document.getElementById('charges-fixes-pct').value) || 0,
-                chargesVarMontant: parseFloat(document.getElementById('charges-variables').value) || 0,
-                chargesVarPct: parseFloat(document.getElementById('charges-variables-pct').value) || 0,
-                loyer: parseFloat(document.getElementById('loyer').value) || 0,
-                telephone: parseFloat(document.getElementById('telephone').value) || 0,
-                equipements: parseFloat(document.getElementById('equipements').value) || 0,
-                typeClientele: document.getElementById('type-clientele').value,
-                region: document.getElementById('region').value
-            };
+                document.getElementById('cotisations-sociales').textContent = cotisationsSociales.toFixed(2);
+                document.getElementById('charges-totales').textContent = chargesTotales.toFixed(2);
+                document.getElementById('benefice-net').textContent = beneficeNet.toFixed(2);
 
-            const resultsAE = calculateAutoEntrepreneur(data);
-            const resultsEI = calculateEntrepreneurIndividuel(data);
+                document.getElementById('resultats').style.display = 'block';
+            });
 
-            updateResultsUI(resultsAE, resultsEI);
-            generateRecommendations(resultsAE, resultsEI, data);
-            document.getElementById('resultats-avances').style.display = 'block';
-        });
+            document.getElementById('calculateur-avance-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const data = {
+                    ca: parseFloat(document.getElementById('ca-annuel').value),
+                    revenusAnterieurs: parseFloat(document.getElementById('revenus-anterieurs').value) || 0,
+                    chargesFixesMontant: parseFloat(document.getElementById('charges-fixes').value) || 0,
+                    chargesFixesPct: parseFloat(document.getElementById('charges-fixes-pct').value) || 0,
+                    chargesVarMontant: parseFloat(document.getElementById('charges-variables').value) || 0,
+                    chargesVarPct: parseFloat(document.getElementById('charges-variables-pct').value) || 0,
+                    loyer: parseFloat(document.getElementById('loyer').value) || 0,
+                    telephone: parseFloat(document.getElementById('telephone').value) || 0,
+                    equipements: parseFloat(document.getElementById('equipements').value) || 0,
+                    typeClientele: document.getElementById('type-clientele').value,
+                    region: document.getElementById('region').value
+                };
 
-        document.getElementById('comparateur-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const ca = parseFloat(document.getElementById('ca-previsionnel').value);
-            const chargesPct = parseFloat(document.getElementById('charges-pourcentage').value);
-            const typeActivite = document.getElementById('type-activite').value;
+                const resultsAE = calculateAutoEntrepreneur(data);
+                const resultsEI = calculateEntrepreneurIndividuel(data);
 
-            const tauxCotisationsAE = typeActivite === 'services' ? 0.22 : 0.12;
-            const chargesAE = ca * tauxCotisationsAE;
-            const revenuBrutAE = ca - (ca * (chargesPct / 100));
-            const revenuNetAE = revenuBrutAE - chargesAE;
-            
-            const tauxCotisationsEI = 0.45;
-            const chargesEI = ca * tauxCotisationsEI;
-            const revenuBrutEI = ca - (ca * (chargesPct / 100));
-            const revenuNetEI = revenuBrutEI - chargesEI;
+                updateResultsUI(resultsAE, resultsEI);
+                generateRecommendations(resultsAE, resultsEI, data);
+                document.getElementById('resultats-avances').style.display = 'block';
+            });
 
-            document.getElementById('charges-ae').textContent = chargesAE.toFixed(2);
-            document.getElementById('revenu-ae').textContent = revenuNetAE.toFixed(2);
-            document.getElementById('charges-ei').textContent = chargesEI.toFixed(2);
-            document.getElementById('revenu-ei').textContent = revenuNetEI.toFixed(2);
+            document.getElementById('comparateur-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const ca = parseFloat(document.getElementById('ca-previsionnel').value);
+                const chargesPct = parseFloat(document.getElementById('charges-pourcentage').value);
+                const typeActivite = document.getElementById('type-activite').value;
 
-            createChart('chart-ae', revenuNetAE, chargesAE, ca * (chargesPct / 100));
-            createChart('chart-ei', revenuNetEI, chargesEI, ca * (chargesPct / 100));
+                const tauxCotisationsAE = typeActivite === 'services' ? 0.22 : 0.12;
+                const chargesAE = ca * tauxCotisationsAE;
+                const revenuBrutAE = ca - (ca * (chargesPct / 100));
+                const revenuNetAE = revenuBrutAE - chargesAE;
+                
+                const tauxCotisationsEI = 0.45;
+                const chargesEI = ca * tauxCotisationsEI;
+                const revenuBrutEI = ca - (ca * (chargesPct / 100));
+                const revenuNetEI = revenuBrutEI - chargesEI;
 
-            const recommendation = document.getElementById('recommendation');
-            if(revenuNetAE > revenuNetEI) {
-                recommendation.innerHTML = `<strong>Recommendation :</strong> Le statut d'auto-entrepreneur semble plus avantageux dans votre situation.`;
-            } else {
-                recommendation.innerHTML = `<strong>Recommendation :</strong> Le statut d'entrepreneur individuel semble plus avantageux dans votre situation.`;
-            }
+                document.getElementById('charges-ae').textContent = chargesAE.toFixed(2);
+                document.getElementById('revenu-ae').textContent = revenuNetAE.toFixed(2);
+                document.getElementById('charges-ei').textContent = chargesEI.toFixed(2);
+                document.getElementById('revenu-ei').textContent = revenuNetEI.toFixed(2);
 
-            document.getElementById('resultats-comparaison').style.display = 'block';
-        });
+                createChart('chart-ae', revenuNetAE, chargesAE, ca * (chargesPct / 100));
+                createChart('chart-ei', revenuNetEI, chargesEI, ca * (chargesPct / 100));
 
-        function createChart(canvasId, revenuNet, chargesSociales, chargesPro) {
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Revenu net', 'Charges sociales', 'Charges pro.'],
-                    datasets: [{
-                        data: [revenuNet, chargesSociales, chargesPro],
-                        backgroundColor: ['#4CAF50', '#FFA726', '#EF5350']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
+                const recommendation = document.getElementById('recommendation');
+                if(revenuNetAE > revenuNetEI) {
+                    recommendation.innerHTML = `<strong>Recommendation :</strong> Le statut d'auto-entrepreneur semble plus avantageux dans votre situation.`;
+                } else {
+                    recommendation.innerHTML = `<strong>Recommendation :</strong> Le statut d'entrepreneur individuel semble plus avantageux dans votre situation.`;
+                }
+
+                document.getElementById('resultats-comparaison').style.display = 'block';
+            });
+
+            function createChart(canvasId, revenuNet, chargesSociales, chargesPro) {
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Revenu net', 'Charges sociales', 'Charges pro.'],
+                        datasets: [{
+                            data: [revenuNet, chargesSociales, chargesPro],
+                            backgroundColor: ['#4CAF50', '#FFA726', '#EF5350']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
                         }
                     }
-                }
-            });
-        }
+                });
+            }
 
-        const backgroundImages = [
-            'https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
-            'https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
-            'https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
-            'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1'
-        ];
+            const backgroundImages = [
+                'https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+                'https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+                'https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1',
+                'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1'
+            ];
 
-        let currentImageIndex = 0;
-        let currentBg = 1;
+            let currentImageIndex = 0;
+            let currentBg = 1;
 
-        function changeBackground() {
-            const nextImage = backgroundImages[(currentImageIndex + 1) % backgroundImages.length];
-            const nextBg = currentBg === 1 ? 2 : 1;
+            function changeBackground() {
+                const nextImage = backgroundImages[(currentImageIndex + 1) % backgroundImages.length];
+                const nextBg = currentBg === 1 ? 2 : 1;
 
-            document.getElementById(`bg${nextBg}`).style.backgroundImage = `url('${nextImage}')`;
-            document.getElementById(`bg${nextBg}`).style.opacity = 1;
-            document.getElementById(`bg${currentBg}`).style.opacity = 0;
+                document.getElementById(`bg${nextBg}`).style.backgroundImage = `url('${nextImage}')`;
+                document.getElementById(`bg${nextBg}`).style.opacity = 1;
+                document.getElementById(`bg${currentBg}`).style.opacity = 0;
 
-            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-            currentBg = nextBg;
-        }
+                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+                currentBg = nextBg;
+            }
 
-        document.getElementById('bg1').style.backgroundImage = `url('${backgroundImages[0]}')`;
-        document.getElementById('bg1').style.opacity = 1;
-        document.getElementById('bg2').style.opacity = 0;
+            document.getElementById('bg1').style.backgroundImage = `url('${backgroundImages[0]}')`;
+            document.getElementById('bg1').style.opacity = 1;
+            document.getElementById('bg2').style.opacity = 0;
 
-        setInterval(changeBackground, 10000);
+            setInterval(changeBackground, 10000);
+        })();
     </script>
 </body>
 </html>
